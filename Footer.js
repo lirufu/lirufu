@@ -3,20 +3,20 @@ import React, { useEffect, useState } from 'react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [codingTime, setCodingTime] = useState({ currentWeek: '加载中...', allTime: '加载中...' });
+  const [codingTime, setCodingTime] = useState(null);
 
   useEffect(() => {
     const fetchWakaTimeData = async () => {
       try {
         const response = await fetch('/api/wakatime');
         if (!response.ok) {
-          throw new Error(`API请求失败，状态码: ${response.status}`);
+          throw new Error(`API request failed with status ${response.status}`);
         }
-        const data = await response.json();
-        setCodingTime(data);
+        const responseData = await response.json();
+        setCodingTime(responseData);
       } catch (error) {
-        console.error("获取WakaTime统计失败:", error);
-        setCodingTime({ currentWeek: 'N/A', allTime: 'N/A' });
+        console.error("Failed to fetch WakaTime stats:", error);
+        return null;
       }
     };
 
@@ -32,9 +32,7 @@ export default function Footer() {
         <p className="text-xs mt-2">
           使用 Next.js 和 Tailwind CSS 构建
         </p>
-        {codingTime.currentWeek === 'N/A' && codingTime.allTime === 'N/A' ? (
-          <p className="text-xs mt-2">无法获取编码时长数据</p>
-        ) : (
+        {codingTime && (
           <div className="text-xs mt-2 space-y-1">
             <p>本周编码时长: {codingTime.currentWeek}</p>
             <p>总编码时长: {codingTime.allTime}</p>

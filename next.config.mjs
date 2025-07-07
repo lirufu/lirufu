@@ -1,9 +1,5 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+export default {
+  experimental: {
+    optimizeCss: false
+  }
 }
-
-export default nextConfig

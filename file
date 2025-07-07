@@ -1,0 +1,11 @@
+// 确保只有一个默认导出
+import QAnythingEmbed from '@/components/QAnythingEmbed';
+
+// 主页面组件
+export default function HomePage() {
+  return (
+    <main>
+      <QAnythingEmbed />
+    </main>
+  );
+}

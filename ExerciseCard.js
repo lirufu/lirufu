@@ -1,30 +1,21 @@
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-
 export default function ExerciseCard({ exercise }) {
   return (
-    <div className="card overflow-hidden hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
-      <div className="bg-gradient-to-r from-blue-50 to-gray-50 border-b p-4">
-        <h3 className="text-xl font-bold text-gray-800">{exercise.title}</h3>
+    <div className="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+      <h3 className="text-xl font-semibold mb-2">{exercise.title}</h3>
+      <p className="text-gray-600 mb-4">{exercise.description}</p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {exercise.tags.map(tag => (
+          <span key={tag} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+            {tag}
+          </span>
+        ))}
       </div>
-      <div className="p-4">
-        <p className="text-gray-600 mb-4 line-clamp-2">{exercise.description}</p>
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">{exercise.date}</span>
-          <Link legacyBehavior href={`/exercises/${exercise.id}`}>
-            <a className="text-blue-500 hover:text-blue-700">查看练习</a>
-          </Link>
-        </div>
-      </div>
+      <a 
+        href={`/exercises/${exercise.id}`} 
+        className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+      >
+        开始练习
+      </a>
     </div>
   );
 }
-
-ExerciseCard.propTypes = {
-  exercise: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    path: PropTypes.string.isRequired
-  }).isRequired
-};

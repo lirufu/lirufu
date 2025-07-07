@@ -1,40 +1,25 @@
 const exercises = [
   {
-    id: 'html',
-    title: "HTML基础",
-    description: "HTML标签和文档结构练习",
-    path: "/exercises/html",
-    content: (
-      <div className="p-4">
-        <h2 className="text-xl font-bold mb-4">HTML基础练习</h2>
-        <p className="mb-4">请创建一个包含标题、段落和图片的HTML页面</p>
-        <pre className="bg-gray-100 p-4 rounded">
-          {`<!DOCTYPE html>
-<html>
-<head>
-  <title>我的页面</title>
-</head>
-<body>
-  <h1>欢迎</h1>
-  <p>这是一个段落</p>
-</body>
-</html>`}
-        </pre>
-      </div>
-    )
+    id: 'html-basics',
+    title: 'HTML基础',
+    description: '学习HTML5基础标签和语义化结构',
+    tags: ['HTML', '基础'],
+    component: 'HtmlBasics'
   },
   {
-    id: 'css',
-    title: "CSS布局",
-    description: "Flexbox和Grid布局练习",
-    path: "/exercises/css"
+    id: 'css-layout',
+    title: 'CSS布局',
+    description: '掌握Flexbox和Grid布局系统',
+    tags: ['CSS', '布局'],
+    component: 'CssLayout'
   },
   {
-    id: 'js',
-    title: "JavaScript基础",
-    description: "变量、函数和DOM操作练习",
-    path: "/exercises/js"
+    id: 'js-dom',
+    title: 'JavaScript DOM操作',
+    description: '学习DOM查询和事件处理',
+    tags: ['JavaScript', 'DOM'],
+    component: 'JsDom'
   }
 ];
 
-export { exercises };
+export default exercises;
